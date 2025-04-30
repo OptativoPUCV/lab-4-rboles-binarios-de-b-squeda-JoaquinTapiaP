@@ -80,3 +80,9 @@ Wed, Apr 30, 2025  8:53:42 AM:
  tests:  8|5
 total_score: 15/70
 e511545
+Wed, Apr 30, 2025  8:59:01 AM: 
+ treemap.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+ tests:  8|5
+total_score: 15/70
+bccb951
