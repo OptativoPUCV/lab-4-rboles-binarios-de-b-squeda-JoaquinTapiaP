@@ -124,13 +124,14 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         child->parent = node->parent;
 
     }
+    else {
+        TreeNode* succ = minimum(node->right);
 
-    TreeNode* succ = minimum(node->right);
 
-
-    node->pair->key = succ->pair->key;
-    node->pair->value = succ->pair->value;
-    removeNode(tree, succ);
+        node->pair->key = succ->pair->key;
+        node->pair->value = succ->pair->value;
+        removeNode(tree, succ);
+    }
 }
 
 
