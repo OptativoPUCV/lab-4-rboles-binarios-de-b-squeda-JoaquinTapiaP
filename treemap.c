@@ -91,7 +91,7 @@ TreeNode * minimum(TreeNode * x){
         x = x->left;
     }
 
-    return NULL;
+    return x;
 }
 
 
