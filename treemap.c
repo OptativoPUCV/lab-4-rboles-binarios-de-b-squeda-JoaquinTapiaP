@@ -98,7 +98,40 @@ TreeNode * minimum(TreeNode * x){
 void removeNode(TreeMap * tree, TreeNode* node) {
     if (node == NULL) return;
 
+    if (node->left == NULL && node->right == NULL) {
+        if (node->parent == NULL) {
+            tree->root = NULL;
+        } 
+        else {
+            if (node->parent->left == node)
+                node->parent->left = NULL;
+            else
+                node->parent->right = NULL;
+        }
+    }
+
+    else if (node->left == NULL || node->right == NULL) {
+        TreeNode* child = (node->left != NULL) ? node->left : node->right;
+
+        tree->root = child;
+        child->parent = NULL;
+        
+        if (node->parent->left == node)
+            node->parent->left = child;
+        else
+            node->parent->right = child;
     
+        child->parent = node->parent;
+
+    }
+    else {
+        TreeNode* succ = minimum(node->right);
+
+
+        node->pair->key = succ->pair->key;
+        node->pair->value = succ->pair->value;
+        removeNode(tree, succ);
+    }
 }
 
 
@@ -108,13 +141,27 @@ void eraseTreeMap(TreeMap * tree, void* key){
     if (searchTreeMap(tree, key) == NULL) return;
     TreeNode* node = tree->current;
     removeNode(tree, node);
-
 }
 
 
 
 
 Pair * searchTreeMap(TreeMap * tree, void* key) {
+    if (tree == NULL || tree->root == NULL) return NULL;
+
+    TreeNode *current = tree->root;
+    while (current != NULL) {
+        if (is_equal(tree, key, current->pair->key)) {
+            tree->current = current;
+            return current->pair;
+        }
+        
+        if (tree->lower_than(key, current->pair->key)) {
+            current = current->left; 
+        } else {
+            current = current->right;
+        }
+    }
     return NULL;
 }
 
