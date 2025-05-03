@@ -98,60 +98,9 @@ TreeNode * minimum(TreeNode * x){
 void removeNode(TreeMap * tree, TreeNode* node) {
     if (node == NULL) return;
 
-    // Caso 1: Nodo sin hijos (hoja)
-    if (node->left == NULL && node->right == NULL) {
-        if (node->parent == NULL) {
-            // Es el nodo raíz
-            tree->root = NULL;
-        } else {
-            // Actualizar el puntero del padre
-            if (node->parent->left == node)
-                node->parent->left = NULL;
-            else
-                node->parent->right = NULL;
-        }
-        free(node->pair);
-        free(node);
-        return;
-    }
-
-    // Caso 2: Nodo con un solo hijo
-    if (node->left == NULL || node->right == NULL) {
-        TreeNode* child = (node->left != NULL) ? node->left : node->right;
-        
-        // Conectar el hijo al padre del nodo actual
-        child->parent = node->parent;
-        
-        if (node->parent == NULL) {
-            // Es el nodo raíz
-            tree->root = child;
-        } else {
-            // Actualizar el puntero del padre
-            if (node->parent->left == node)
-                node->parent->left = child;
-            else
-                node->parent->right = child;
-        }
-        
-        free(node->pair);
-        free(node);
-        return;
-    }
-
-    // Caso 3: Nodo con dos hijos
-    TreeNode* succ = minimum(node->right);
     
-    // Copiar los datos del sucesor al nodo actual
-    void* tempKey = node->pair->key;
-    void* tempValue = node->pair->value;
-    node->pair->key = succ->pair->key;
-    node->pair->value = succ->pair->value;
-    succ->pair->key = tempKey;
-    succ->pair->value = tempValue;
-    
-    // Eliminar el sucesor (que ahora tiene los datos originales del nodo)
-    removeNode(tree, succ);
 }
+
 
 void eraseTreeMap(TreeMap * tree, void* key){
     if (tree == NULL || tree->root == NULL) return;
