@@ -201,3 +201,9 @@ Sat, May  3, 2025  3:23:49 PM:
  1 file changed, 6 insertions(+), 1 deletion(-)
  tests:  0|0
 5ad853c
+Sat, May  3, 2025  3:24:20 PM: 
+ treemap.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+ tests:  15|4
+total_score: 25/70
+deffff6
