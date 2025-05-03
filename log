@@ -207,3 +207,14 @@ Sat, May  3, 2025  3:24:20 PM:
  tests:  15|4
 total_score: 25/70
 deffff6
+Sat, May  3, 2025  3:26:34 PM: 
+ treemap.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+Compilation failed
+In file included from test.c:4:0:
+treemap.c: In function 'upperBound':
+treemap.c:177:15: error: variable 'result' set but not used [-Werror=unused-but-set-variable]
+     TreeNode* result = NULL;
+               ^~~~~~
+cc1.exe: all warnings being treated as errors
+31075fa
